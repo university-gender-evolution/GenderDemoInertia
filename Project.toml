@@ -3,6 +3,9 @@ uuid = "c65b7344-fda6-11e9-333e-1fa0ecccea88"
 authors = ["Krishna Bhogaonker"]
 version = "0.1.0"
 
+[deps]
+AxisArrays = "39de3d68-74b9-583c-8d2d-e117c070f3a9"
+
 [compat]
 julia = "1"
 
