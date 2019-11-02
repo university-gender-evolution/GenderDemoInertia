@@ -57,32 +57,3 @@ const unsummarized_columns = [:yr, :date_time,
 
                 :runn, :scen
 ]
-
-
-
-
-
-
-function test_column_array()
-    if :deptn ∈ column_names
-        return 1
-    else
-        return 0
-    end
-end
-
-function test_decorator_columns()
-    if :scen ∈ decorator_columns
-        return 1
-    else
-        return 0
-    end
-end
-
-function test_unsummarize_columns()
-    if :runn ∈ unsummarized_columns
-        return 1
-    else
-        return 0
-    end
-end
