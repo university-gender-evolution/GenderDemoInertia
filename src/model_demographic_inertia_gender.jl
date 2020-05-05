@@ -382,7 +382,7 @@ function update_text_column_names!(df)
 end
 
 function concatenate_actual_data_to_simulation!(df_simulation::DataFrame)
-    df_actual = CSV.read("./src/mgmt_data.csv")
+    df_actual = CSV.read("mgmt_data.csv")
     if size(df_simulation)[1] > size(df_actual)[1]
         difference = size(df_simulation)[1] - size(df_actual)[1]
         missing_df = missings(difference, size(df_actual)[2]) |> DataFrame
