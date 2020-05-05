@@ -1,14 +1,12 @@
 
+const MALE_COLUMNS = [:m1, :m2, :m3]
+const FEMALE_COLUMNS = [:f1, :f2, :f3]
+const ALL_FACULTY = vcat(FEMALE_COLUMNS, MALE_COLUMNS)
 
-const column_names = [:f1, :f2, :f3,
+const INTEGER_COLUMNS = [:f1, :f2, :f3,
                 :m1, :m2, :m3,
                 :lev1, :lev2, :lev3,
-                :f, :m, :fpct1,
-                :deptn,
-
-                :fpct1, :fpct2, :fpct3,
-                :mpct1, :mpct2, :mpct3,
-                :fpct,
+                :f, :m, :deptn,
 
                 :fattr1, :fattr2, :fattr3,
                 :mattr1, :mattr2, :mattr3,
@@ -25,6 +23,17 @@ const column_names = [:f1, :f2, :f3,
                 :prom2, :prom3, :fprom,
                 :mprom,
 
+                :f1_1d, :f2_1d, :f3_1d,
+                :m1_1d, :m2_1d, :m3_1d, :deptn_1d,
+
+                :ss_deptn_ub, :ss_deptn_lb, :ss_duration,
+                :runn, :yr, :year, :run,
+]
+
+const FLOAT_COLUMNS = [:fpct1, :fpct2, :fpct3,
+                :mpct1, :mpct2, :mpct3,
+                :fpct,
+
                 :r_fattr1, :r_fattr2, :r_fattr3,
                 :r_mattr1, :r_mattr2, :r_mattr3,
                 :r_attr,
@@ -36,16 +45,15 @@ const column_names = [:f1, :f2, :f3,
                 :r_fprom1, :r_fprom2, :r_fprom3,
                 :r_mprom1, :r_mprom2, :r_mprom3,
 
-                :ss_deptn_ub, :ss_deptn_lb, :ss_duration,
-                :runn, :yr,
+                :g_yr_rate
 ]
 
-const decorator_columns = [
+const DECORATOR_COLUMNS = [
                 :scen, :date_time, :notes,
-                :model
+                :model, :language
 ]
 
-const unsummarized_columns = [:yr, :date_time,
+const UNSUMMARIZED_COLUMNS = [
                 :r_fattr1, :r_fattr2, :r_fattr3,
                 :r_mattr1, :r_mattr2, :r_mattr3,
 
@@ -54,6 +62,11 @@ const unsummarized_columns = [:yr, :date_time,
 
                 :r_fprom1, :r_fprom2, :r_fprom3,
                 :r_mprom1, :r_mprom2, :r_mprom3,
-
-                :runn, :scen
+                :ss_deptn_ub, :ss_deptn_lb, :ss_duration,
+                :runn, :ss_deptn_range, :r_hire,
+                :r_hire_adj, :r_attr, :g_yr_rate
 ]
+
+const TEXT_COLUMNS = [:scen, :model, :notes, :language, :date_time]
+
+const DATE_TIME = [:date_time]
