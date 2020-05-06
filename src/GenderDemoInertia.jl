@@ -7,6 +7,7 @@ using CSV
 using Debugger
 using Missings
 using DataFramesMeta
+import Pandas
 include("model_demographic_inertia_gender.jl")
 include("../test/conftest.jl")
 
