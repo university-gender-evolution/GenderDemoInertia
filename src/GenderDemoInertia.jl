@@ -24,7 +24,7 @@ function run_gender_inertia_simulation(initial_values, runs, duration)
 function get_summaries(initial_values, runs, duration)
     simulation_data = demographic_inertia_simulation(initial_values, runs, duration)
     summary = calculate_simulation_summary(simulation_data)
-    summary ;
+    Pandas.DataFrame(summary) ;
 end
 
 #@run run_gender_inertia_simulation(TESTDATA, 2, 20)
