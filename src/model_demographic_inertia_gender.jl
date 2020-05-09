@@ -93,7 +93,8 @@ function populate_initial_values!(ra, iv)
     ra[:, :ss_duration] .= iv["duration"]
     ra[:, :model] .= iv["model_name"]
     ra[:, :language] .= "julia"
-    ra
+    ra[:, :scen] = "scenario name"
+    ra[:, :notes] = "notes"
 end
 
 function run_model_with_drift!(df, initial_values, runs)
