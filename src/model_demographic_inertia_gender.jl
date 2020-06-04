@@ -425,3 +425,7 @@ function replace_nans(a::Union{String, Missing})
         return a
     end
 end
+
+function replace_nans(a::Missing)
+    return missing
+end
