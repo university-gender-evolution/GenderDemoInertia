@@ -419,8 +419,6 @@ end
 function replace_nans(a::Union{String, Missing})
     if ismissing(a)
         return a
-    elseif isnan(a)
-        return missing
     else
         return a
     end
@@ -428,4 +426,14 @@ end
 
 function replace_nans(a::Missing)
     return missing
+end
+
+function replace_nans(a::Union{Real, Missing})
+    if ismissing(a)
+        return a
+    elseif isnan(a)
+        return missing
+    else
+        return a
+    end
 end
