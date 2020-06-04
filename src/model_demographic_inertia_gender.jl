@@ -321,7 +321,9 @@ function calculate_simulation_summary(sim; criterion = 0.25)
     summary = concatenate_actual_data_to_simulation!(summary)
 
     CSV.write("model_summary_$(Dates.format(Dates.now(), "mm-dd-yyyy HH:MM")).csv", summary)
-    summary
+
+    simulation = replace_nans.(sim)
+    return simulation, summary
 end
 
 # function calculate_probability_of_target(criterion::Float64, df::DataFrame)
