@@ -1,5 +1,4 @@
 
-
 const TESTDATA = Dict("number_of_females_1"=> 2,
              "number_of_females_2"=> 3,
              "number_of_females_3"=> 3,
@@ -30,5 +29,5 @@ const TESTDATA = Dict("number_of_females_1"=> 2,
              "lowerbound"=> 74,
              "duration"=> 20,
              "annotation_text"=> "this is an annotation",
-             "growth_rate"=> [0.00],
+             "growth_rate"=> [0.01, 0.01, -0.01, -0.01, 0.01, -0.01, 0.01],
              "model_name" => "model 3 with drift")

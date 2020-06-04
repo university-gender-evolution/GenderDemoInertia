@@ -11,6 +11,7 @@ function demographic_inertia_simulation(initial_values,
     res = build_simulation_results_array(runs, duration)
     populate_initial_values!(res, initial_values)
     run_model_with_drift!(res, initial_values, runs)
+    @bp
     res
 end
 
@@ -93,14 +94,14 @@ function populate_initial_values!(ra, iv)
     ra[:, :ss_duration] .= iv["duration"]
     ra[:, :model] .= iv["model_name"]
     ra[:, :language] .= "julia"
-    ra[:, :scen] = "scenario name"
-    ra[:, :notes] = "notes"
+    ra[:, :scen] .= "scenario name"
+    ra[:, :notes] .= "notes"
 end
 
 function run_model_with_drift!(df, initial_values, runs)
 
-    department_size_forecasts = calculate_yearly_dept_size_targets(df[1, :ss_duration],
-                                                                    initial_values["growth_rate"])
+    department_size_forecasts = calculate_yearly_dept_size_targets(df[1, :ss_duration], initial_values["growth_rate"])
+
     dept_attr_rate = mean(df[1, [:r_fattr1,
                                 :r_fattr2,
                                 :r_fattr3,
@@ -112,7 +113,7 @@ function run_model_with_drift!(df, initial_values, runs)
     df[1, :g_yr_rate] = department_size_forecasts[1] # TODO move this within the loop to set initial growth value
     df[:, :runn] .= runs
 
-    for j in 1:runs
+    @showprogress for j in 1:runs
 
         for i in 2:df[1,:ss_duration]
             k = i + (j-1)*df[1, :ss_duration]
@@ -283,7 +284,6 @@ end
 function calculate_yearly_dept_size_targets(duration, forecasts_list)
     repeat_interval = _calculate_forecast_interval(duration, forecasts_list)
     repeat(forecasts_list, inner=repeat_interval)
-
 end
 
 function calculate_simulation_summary(sim; criterion = 0.25)
@@ -384,7 +384,7 @@ end
 
 function concatenate_actual_data_to_simulation!(df_simulation::DataFrame)
     df_actual = CSV.read(joinpath(@__DIR__, "mgmt_data.csv"))
-    #@bp
+
     if size(df_simulation)[1] > size(df_actual)[1]
         difference = size(df_simulation)[1] - size(df_actual)[1]
         missing_df = missings(difference, size(df_actual)[2]) |> DataFrame
