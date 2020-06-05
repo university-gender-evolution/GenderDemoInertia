@@ -137,7 +137,7 @@ function run_model_with_drift!(df, initial_values, runs)
                 df[k-1, :mpct3] = df[1, :mpct3]
                 df[k-1, :fpct] = df[1, :fpct]
                 df[k-1, :deptn] = df[1, :deptn]
-                df[k-1, :attr] = df[1, :m3]
+                df[k-1, :attr] = df[1, :attr]
                 df[k-1, :run] = j-1
                 df[k-1, :yr] = i-2 # sets yr to 0.
                 df[k-1, :year] = i-2
